@@ -14,6 +14,7 @@ public static class Campus
     public static List<Hostel> hostels = new List<Hostel>(0);
     public static List<int> DeleteHostels = new List<int>(0);
 
+
     public static int GetID()
     {
         if (DeleteHostels.Count != 0)
