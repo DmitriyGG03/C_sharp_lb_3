@@ -125,6 +125,7 @@
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Студентський кампус";
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.topPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

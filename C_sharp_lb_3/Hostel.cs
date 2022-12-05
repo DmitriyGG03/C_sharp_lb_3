@@ -1,59 +1,31 @@
-﻿using C_sharp_lb_2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using C_sharp_lb_3;
 using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
 
 namespace Hostels;
 public class Hostel : ICloneable
 {
-    private int roomsNumber;
-    private int studentAmount;
-    private int stuffNumber;
-
     public int ID { get; set; }
-    public bool Canteen { get; set; } = false;
     public string universityName { get; set; }
     public string hostelAddress { get; set; }
-    public int StuffNumber
-    {
-        get => stuffNumber;
-        set
-        {
-            if (value >= 1 && value < 1000) stuffNumber = value;
-            else throw new Exception("Incorrect number of employees");
-        }
-    }
-    public int RoomsNumber
-    {
-        get { return roomsNumber; }
-        set
-        {
-            if (value >= 0 && value < 1000) roomsNumber = value;
-            else throw new Exception("Incorrect number of rooms");
-        }
-    }
-    public int StudentAmount
-    {
-        get => studentAmount;
-        set
-        {
-            if (value <= (RoomsNumber * 3)) studentAmount = value;
-            else throw new Exception("The number of students exceeds the number of places in the hostel");
-        }
-    }
     public double hostelProfit { get; set; }
 
-    public Hostel(int id, string universityName, string hostelAddress, int StuffNumber, int RoomsNumber)
+    private List<Worker> Workers { get; set; }
+    private List<Student> Students { get; set; }
+    public List<Room> Rooms { get; set; }
+    public int StuffNumber { get => Workers.Count; }
+    public int StudentAmount { get => Students.Count; }
+    public int RoomsNumber { get => Rooms.Count; }
+
+
+
+    public Hostel(int? ID, string universityName, string hostelAddress, List<Worker> workers, List<Room> rooms)
     {
-        ID = id;
+        if (ID is null) ID = Campus.GetID();
+        else this.ID = (int)ID;
         this.universityName = universityName;
         this.hostelAddress = hostelAddress;
-        this.StuffNumber = StuffNumber;
-        this.RoomsNumber = RoomsNumber;
+        Workers = workers;
+        Rooms = rooms;
         CalcProfit();
     }
 
@@ -62,10 +34,6 @@ public class Hostel : ICloneable
         double profit = 0.0;
         profit += StudentAmount * 800;
         profit -= StuffNumber * 5000;
-        if (Canteen)
-        {
-            profit += (profit / 5);
-        }
         hostelProfit = profit;
     }
     public override string ToString()
@@ -76,14 +44,12 @@ public class Hostel : ICloneable
         sb.Append($"Кількість працівників:\t{StuffNumber}\n");
         sb.Append($"Кількість кімнат:\t\t{RoomsNumber}\n");
         sb.Append($"Кількість студентів:\t{StudentAmount}\n");
-        if (Canteen) sb.Append($"Присутня столова\n");
-        else sb.Append($"Cтолова відсутня\n");
         sb.Append($"Прибуток:\t\t{hostelProfit}\n");
         return sb.ToString();
     }
 
     public object Clone()
     {
-        return new Hostel (ID, universityName, hostelAddress, StuffNumber, RoomsNumber);
+        return new Hostel(null, universityName, hostelAddress, Workers, Rooms);
     }
 }

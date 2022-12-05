@@ -1,10 +1,11 @@
 ﻿using Hostels;
+using C_sharp_lb_3;
 
 namespace C_sharp_lb_2
 {
     public partial class CreatingHostel : Form
     {
-        bool tr1 = false, tr2 = false, tr3 = false, tr4 = false;
+        bool tr1 = false, tr2 = false;
 
         public CreatingHostel()
         {
@@ -40,41 +41,18 @@ namespace C_sharp_lb_2
             }
         }
 
-        private void tb_staffNumber_TextChanged(object sender, EventArgs e)
-        {
-            if (Campus.switchImageInt(((TextBox)sender).Text, out int num))
-            {
-                pb_3.ImageLocation = Campus.picOK;
-                tr3 = true;
-            }
-            else
-            {
-                pb_3.ImageLocation = Campus.picDislike;
-                tr3 = false;
-            }
-        }
-
-        private void tb_roomsNumber_TextChanged(object sender, EventArgs e)
-        {
-            if (Campus.switchImageInt(((TextBox)sender).Text, out int num))
-            {
-                pb_4.ImageLocation = Campus.picOK;
-                tr4 = true;
-            }
-            else
-            {
-                pb_4.ImageLocation = Campus.picDislike;
-                tr4 = false;
-            }
-        }
-
         private void bt_OK_Click(object sender, EventArgs e)
         {
-            if (tr1 && tr2 && tr3 && tr4)
+            if (tr1 && tr2)
             {
-                int ID = Campus.GetID();
-                var newHostle = new Hostel(ID, tb_univName.Text, tb_hostelAddress.Text, Convert.ToInt32(tb_staffNumber.Text), Convert.ToInt32(tb_roomsNumber.Text));
-                Campus.hostels.Add((Hostel)newHostle.Clone());
+                List<Worker> students = new List<Worker>();
+                List<Room> rooms = new List<Room>();    
+                for(int i = 0; i < 50; i++)
+                {
+
+                }
+                Hostel newHostel = new Hostel(null, tb_univName.Text, tb_hostelAddress.Text, Convert.ToInt32(tb_staffNumber.Text), Convert.ToInt32(tb_roomsNumber.Text));
+                Campus.hostels.Add((Hostel)newHostel.Clone());
                 if (Campus.hostels.Count == 0) MessageBox.Show("New hostel hasn`t been created!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {

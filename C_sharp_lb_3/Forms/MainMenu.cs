@@ -26,14 +26,9 @@ namespace C_sharp_lb_2
 
         private void bt_CreateHostel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             CreatingHostel newHostel = new CreatingHostel();
             newHostel.Show();
-        }
-
-        private void bt_addCanteen_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void bt_hostelManager_Click(object sender, EventArgs e)
@@ -41,6 +36,11 @@ namespace C_sharp_lb_2
             this.Hide();
             ManageHostels manageStudents = new ManageHostels();
             manageStudents.Show();
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

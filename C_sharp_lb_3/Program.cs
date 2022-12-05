@@ -1,35 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using C_sharp_lb_2;
-using Hostels;
-
-
-
-public static class HostelExtension
-{
-    public static bool AddCanteen(this Hostel hstl)
-    {
-        if (!hstl.Canteen)
-        {
-            hstl.Canteen = true;
-            hstl.StuffNumber += 5;
-            hstl.CalcProfit();
-            return true;
-        }
-        else return false;
-    }
-}
+﻿using Hostels;
 
 public static class Extensions
 {
-    public static bool find<T>(this List<T> list, T target) {
+    public static bool find<T>(this List<T> list, T target)
+    {
         return list.Contains(target);
     }
 }
-
 
 namespace C_sharp_lb_2
 {
@@ -43,7 +20,9 @@ namespace C_sharp_lb_2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());          
+            Application.Run(new MainMenu());
+
+            Campus.Initializing();
         }
     }
 }

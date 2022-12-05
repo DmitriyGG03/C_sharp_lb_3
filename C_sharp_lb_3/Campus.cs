@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Hostels;
+﻿using Hostels;
+using C_sharp_lb_3;
 
 public static class Campus
 {
@@ -13,7 +8,8 @@ public static class Campus
 
     public static List<Hostel> hostels = new List<Hostel>(0);
     public static List<int> DeleteHostels = new List<int>(0);
-
+    public static List<int> DeletedID = new List<int>(0);
+    public static int LastID = 0;
 
     public static int GetID()
     {
@@ -75,5 +71,44 @@ public static class Campus
         {
             return true;
         }
+    }
+
+    public static void ReadFiles()
+    {
+        DirectoryInfo dirInfo = new DirectoryInfo(@"..\..\..\CampusData");
+        if (!dirInfo.Exists)
+        {
+            dirInfo.Create();
+        }
+        using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Data.txt", false))
+        {
+            if (hostels.Count != 0)
+            {
+                foreach (Hostel host in hostels)
+                {
+                    writer.WriteAsync("Hotels");
+                    writer.WriteAsync($"{host.ID}\n{host.universityName}\n{host.hostelAddress}\n");
+                    if (host.Rooms.Count != 0)
+                    {                        
+                        foreach(Room rms in host.Rooms)
+                        {
+                            writer.WriteAsync("Rooms\n");
+                            writer.WriteAsync($"{rms.ID}\n{rms.roomType}");
+                            if(rms.IDrecordBooks.Count != 0)
+                            {
+                                foreach(int i in rms.IDrecordBooks)
+                                {
+                                    writer.WriteLineAsync(i.ToString());
+                                }                                
+                            }
+                        }
+                    }
+                    writer.WriteLineAsync("\n\n");
+                }
+            }
+            writer.WriteLineAsync();
+        }
+
+
     }
 }

@@ -32,20 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bt_OK = new System.Windows.Forms.Button();
             this.bt_Cancel = new System.Windows.Forms.Button();
-            this.lb_staffNumber = new System.Windows.Forms.Label();
-            this.pb_3 = new System.Windows.Forms.PictureBox();
-            this.tb_staffNumber = new System.Windows.Forms.TextBox();
-            this.lb_roomsNumber = new System.Windows.Forms.Label();
-            this.pb_4 = new System.Windows.Forms.PictureBox();
-            this.tb_roomsNumber = new System.Windows.Forms.TextBox();
             this.tb_hostelAddress = new System.Windows.Forms.TextBox();
             this.pb_2 = new System.Windows.Forms.PictureBox();
             this.lb_hostelAddress = new System.Windows.Forms.Label();
             this.tb_univName = new System.Windows.Forms.TextBox();
             this.pb_1 = new System.Windows.Forms.PictureBox();
             this.lb_univName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +63,7 @@
             this.bt_OK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
             this.bt_OK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.bt_OK.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bt_OK.Location = new System.Drawing.Point(10, 474);
+            this.bt_OK.Location = new System.Drawing.Point(10, 275);
             this.bt_OK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_OK.Name = "bt_OK";
             this.bt_OK.Size = new System.Drawing.Size(230, 60);
@@ -89,7 +81,7 @@
             this.bt_Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.bt_Cancel.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bt_Cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.bt_Cancel.Location = new System.Drawing.Point(253, 474);
+            this.bt_Cancel.Location = new System.Drawing.Point(253, 275);
             this.bt_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Cancel.Name = "bt_Cancel";
             this.bt_Cancel.Size = new System.Drawing.Size(230, 60);
@@ -97,74 +89,6 @@
             this.bt_Cancel.Text = "Відмінити";
             this.bt_Cancel.UseVisualStyleBackColor = false;
             this.bt_Cancel.Click += new System.EventHandler(this.bt_Cancel_Click);
-            // 
-            // lb_staffNumber
-            // 
-            this.lb_staffNumber.AutoSize = true;
-            this.lb_staffNumber.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_staffNumber.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lb_staffNumber.Location = new System.Drawing.Point(10, 265);
-            this.lb_staffNumber.Name = "lb_staffNumber";
-            this.lb_staffNumber.Size = new System.Drawing.Size(202, 26);
-            this.lb_staffNumber.TabIndex = 11;
-            this.lb_staffNumber.Text = "Кількість працівників";
-            // 
-            // pb_3
-            // 
-            this.pb_3.Image = global::C_sharp_lb_2.Properties.Resources.PicDislike;
-            this.pb_3.Location = new System.Drawing.Point(10, 291);
-            this.pb_3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pb_3.Name = "pb_3";
-            this.pb_3.Size = new System.Drawing.Size(65, 65);
-            this.pb_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_3.TabIndex = 10;
-            this.pb_3.TabStop = false;
-            // 
-            // tb_staffNumber
-            // 
-            this.tb_staffNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_staffNumber.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tb_staffNumber.Location = new System.Drawing.Point(83, 293);
-            this.tb_staffNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_staffNumber.Multiline = true;
-            this.tb_staffNumber.Name = "tb_staffNumber";
-            this.tb_staffNumber.Size = new System.Drawing.Size(400, 65);
-            this.tb_staffNumber.TabIndex = 9;
-            this.tb_staffNumber.TextChanged += new System.EventHandler(this.tb_staffNumber_TextChanged);
-            // 
-            // lb_roomsNumber
-            // 
-            this.lb_roomsNumber.AutoSize = true;
-            this.lb_roomsNumber.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_roomsNumber.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lb_roomsNumber.Location = new System.Drawing.Point(10, 369);
-            this.lb_roomsNumber.Name = "lb_roomsNumber";
-            this.lb_roomsNumber.Size = new System.Drawing.Size(155, 26);
-            this.lb_roomsNumber.TabIndex = 16;
-            this.lb_roomsNumber.Text = "Кількість кімнат";
-            // 
-            // pb_4
-            // 
-            this.pb_4.Image = global::C_sharp_lb_2.Properties.Resources.PicDislike;
-            this.pb_4.Location = new System.Drawing.Point(10, 397);
-            this.pb_4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pb_4.Name = "pb_4";
-            this.pb_4.Size = new System.Drawing.Size(65, 65);
-            this.pb_4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb_4.TabIndex = 15;
-            this.pb_4.TabStop = false;
-            // 
-            // tb_roomsNumber
-            // 
-            this.tb_roomsNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_roomsNumber.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tb_roomsNumber.Location = new System.Drawing.Point(83, 397);
-            this.tb_roomsNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tb_roomsNumber.Multiline = true;
-            this.tb_roomsNumber.Name = "tb_roomsNumber";
-            this.tb_roomsNumber.Size = new System.Drawing.Size(400, 65);
-            this.tb_roomsNumber.TabIndex = 14;
-            this.tb_roomsNumber.TextChanged += new System.EventHandler(this.tb_roomsNumber_TextChanged);
             // 
             // tb_hostelAddress
             // 
@@ -180,7 +104,6 @@
             // 
             // pb_2
             // 
-            this.pb_2.Image = global::C_sharp_lb_2.Properties.Resources.PicDislike;
             this.pb_2.Location = new System.Drawing.Point(10, 188);
             this.pb_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_2.Name = "pb_2";
@@ -214,7 +137,6 @@
             // 
             // pb_1
             // 
-            this.pb_1.Image = global::C_sharp_lb_2.Properties.Resources.PicDislike;
             this.pb_1.Location = new System.Drawing.Point(10, 83);
             this.pb_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pb_1.Name = "pb_1";
@@ -240,15 +162,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gold;
             this.CancelButton = this.bt_Cancel;
-            this.ClientSize = new System.Drawing.Size(494, 545);
-            this.Controls.Add(this.lb_roomsNumber);
-            this.Controls.Add(this.pb_4);
-            this.Controls.Add(this.tb_roomsNumber);
+            this.ClientSize = new System.Drawing.Size(494, 358);
             this.Controls.Add(this.bt_Cancel);
             this.Controls.Add(this.bt_OK);
-            this.Controls.Add(this.lb_staffNumber);
-            this.Controls.Add(this.pb_3);
-            this.Controls.Add(this.tb_staffNumber);
             this.Controls.Add(this.lb_hostelAddress);
             this.Controls.Add(this.pb_2);
             this.Controls.Add(this.tb_hostelAddress);
@@ -259,13 +175,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 800);
-            this.MinimumSize = new System.Drawing.Size(406, 397);
+            this.MaximumSize = new System.Drawing.Size(510, 397);
+            this.MinimumSize = new System.Drawing.Size(510, 397);
             this.Name = "CreatingHostel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додавання гуртожитку";
-            ((System.ComponentModel.ISupportInitialize)(this.pb_3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1)).EndInit();
             this.ResumeLayout(false);
@@ -278,12 +192,6 @@
         private Label label1;
         private Button bt_OK;
         private Button bt_Cancel;
-        private Label lb_staffNumber;
-        private PictureBox pb_3;
-        private TextBox tb_staffNumber;
-        private Label lb_roomsNumber;
-        private PictureBox pb_4;
-        private TextBox tb_roomsNumber;
         private TextBox tb_hostelAddress;
         private PictureBox pb_2;
         private Label lb_hostelAddress;
