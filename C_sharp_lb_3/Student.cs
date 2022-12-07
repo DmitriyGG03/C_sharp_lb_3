@@ -1,4 +1,6 @@
-﻿namespace C_sharp_lb_3;
+﻿using System.CodeDom.Compiler;
+
+namespace C_sharp_lb_3;
 
 public class Student
 {
@@ -8,7 +10,8 @@ public class Student
     public string Faculty { get; set; }
     public Sex sex { get; set; }
     public string Group { get; set; }
-    public string IDrecordBook {
+    public string IDrecordBook
+    {
         get => iDrecordBook;
         set
         {
@@ -18,21 +21,25 @@ public class Student
     }
     public CourseNumber Course { get; set; }
 
-    Student(string[] fullName, string Faculty, Sex sex, string Group, string IDrecordBook, CourseNumber Course)
+    public Student(string[] fullName, string Faculty, Sex sex, string Group, string? iDrecordBook, CourseNumber Course)
     {
         FullName = fullName;
         this.Faculty = Faculty;
         this.sex = sex;
         this.Group = Group;
+        if (iDrecordBook == null || iDrecordBook == "") IDrecordBook = GeneratingIDrecordBook();
+        else IDrecordBook = iDrecordBook;
         this.IDrecordBook = IDrecordBook;
         this.Course = Course;
     }
+
+    private string GeneratingIDrecordBook() => Campus.LongRandom(10000000L, 99999999L, new Random()).ToString();
 }
 
 public enum Sex
 {
-    Male,
-    Female
+    Male = 'М',
+    Female = 'Ж'
 }
 
 public enum CourseNumber

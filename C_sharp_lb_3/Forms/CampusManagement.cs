@@ -65,14 +65,14 @@ namespace C_sharp_lb_2.Forms
         {
             foreach (string str in arr)
             {
-                if (str == "" || str is null) return false;
+                if ((str == "" || str is null) && str == tb_st_ID.Text) return false;
             }
             return true;
         }
 
         private void bt_addStudents_Click(object sender, EventArgs e)
         {
-            string[] arrString = new string[8]
+            string[] arrString = new string[8] // Заносимо значення з полів вводу в масив
             {
                 tb_st_name.Text,
                 tb_st_surname.Text,
@@ -82,12 +82,14 @@ namespace C_sharp_lb_2.Forms
                 tb_st_course.Text,
                 tb_st_ID.Text,
                 tb_st_sex.Text
-            }; 
+            };
 
-            if (CheckingStringInputValues(arrString) && Enum.IsDefined(typeof(Sex), tb_st_sex.Text) && 
-                Enum.IsDefined(typeof(CourseNumber), tb_st_course.Text))
+            if (CheckingStringInputValues(arrString) && Enum.IsDefined(typeof(Sex), tb_st_sex.Text) &&
+                Enum.IsDefined(typeof(CourseNumber), Convert.ToInt32(tb_st_course.Text))) // Перевіряємо масив на пусті значення та звіряємо значення 
             {
-
+                Enum.TryParse(tb_st_sex.Text, out Sex s);
+                Enum.TryParse(tb_st_course.Text, out CourseNumber c);
+                Campus.CampusStudents.Add(new Student(new string[] { tb_st_name.Text, tb_st_surname.Text, tb_st_patronymic.Text }, tb_st_faculty.Text, s, tb_st_group.Text, null, c));
             }
         }
     }

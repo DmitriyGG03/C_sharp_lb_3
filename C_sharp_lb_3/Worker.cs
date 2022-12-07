@@ -33,21 +33,11 @@ public class Worker
         Name = name;
         this.position = position;
         Salary = (int)position;
-        if (individualTaxNumber is null) IndividualTaxNumber = GenerationTaxNumber();
+        if (individualTaxNumber is null || individualTaxNumber == "") IndividualTaxNumber = GenerationTaxNumber();
         else individualTaxNumber = IndividualTaxNumber.ToString();
     }
 
-    private string GenerationTaxNumber()
-    {
-        return LongRandom(1000000000L, 9999999999L, new Random()).ToString();
-    }
-    private long LongRandom(long min, long max, Random rand)
-    {
-        long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
-        result = (result << 32);
-        result = result | (long)rand.Next((Int32)min, (Int32)max);
-        return result;
-    }
+    private string GenerationTaxNumber() => Campus.LongRandom(1000000000L, 9999999999L, new Random()).ToString();
 }
 
 
