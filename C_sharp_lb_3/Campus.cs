@@ -7,6 +7,7 @@ public static class Campus
     public static string picDislike = @"..\..\..\Pictures\PicDislike.png";
 
     public static List<Hostel> hostels = new List<Hostel>(0);
+    public static List<Student> CampusStudents = new List<Student>(0);
     public static List<int> DeleteHostels = new List<int>(0);
     public static List<int> DeletedID = new List<int>(0);
     public static int LastID = 0;
