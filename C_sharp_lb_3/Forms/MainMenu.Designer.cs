@@ -34,6 +34,8 @@
             this.topPanel1 = new System.Windows.Forms.Panel();
             this.bt_hostelManager = new System.Windows.Forms.Button();
             this.bt_exit = new System.Windows.Forms.Button();
+            this.bt_save = new System.Windows.Forms.Button();
+            this.bt_load = new System.Windows.Forms.Button();
             this.topPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +100,7 @@
             this.bt_exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_exit.Font = new System.Drawing.Font("Segoe UI Emoji", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bt_exit.ForeColor = System.Drawing.SystemColors.Control;
-            this.bt_exit.Location = new System.Drawing.Point(10, 176);
+            this.bt_exit.Location = new System.Drawing.Point(10, 262);
             this.bt_exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_exit.Name = "bt_exit";
             this.bt_exit.Size = new System.Drawing.Size(310, 45);
@@ -107,12 +109,46 @@
             this.bt_exit.UseVisualStyleBackColor = false;
             this.bt_exit.Click += new System.EventHandler(this.bt_exit_Click);
             // 
+            // bt_save
+            // 
+            this.bt_save.BackColor = System.Drawing.Color.LimeGreen;
+            this.bt_save.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_save.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bt_save.Font = new System.Drawing.Font("Segoe UI Emoji", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bt_save.ForeColor = System.Drawing.SystemColors.Control;
+            this.bt_save.Location = new System.Drawing.Point(10, 164);
+            this.bt_save.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_save.Name = "bt_save";
+            this.bt_save.Size = new System.Drawing.Size(310, 45);
+            this.bt_save.TabIndex = 9;
+            this.bt_save.Text = "Зберегти дані";
+            this.bt_save.UseVisualStyleBackColor = false;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
+            // 
+            // bt_load
+            // 
+            this.bt_load.BackColor = System.Drawing.Color.LimeGreen;
+            this.bt_load.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_load.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.bt_load.Font = new System.Drawing.Font("Segoe UI Emoji", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bt_load.ForeColor = System.Drawing.SystemColors.Control;
+            this.bt_load.Location = new System.Drawing.Point(10, 213);
+            this.bt_load.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_load.Name = "bt_load";
+            this.bt_load.Size = new System.Drawing.Size(310, 45);
+            this.bt_load.TabIndex = 10;
+            this.bt_load.Text = "Завантажити дані";
+            this.bt_load.UseVisualStyleBackColor = false;
+            this.bt_load.Click += new System.EventHandler(this.bt_load_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(330, 232);
+            this.ClientSize = new System.Drawing.Size(330, 317);
+            this.Controls.Add(this.bt_load);
+            this.Controls.Add(this.bt_save);
             this.Controls.Add(this.bt_exit);
             this.Controls.Add(this.bt_hostelManager);
             this.Controls.Add(this.topPanel1);
@@ -120,8 +156,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(346, 271);
-            this.MinimumSize = new System.Drawing.Size(346, 271);
+            this.MaximumSize = new System.Drawing.Size(346, 356);
+            this.MinimumSize = new System.Drawing.Size(346, 356);
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Студентський кампус";
@@ -138,5 +174,7 @@
         private Panel topPanel1;
         private Button bt_hostelManager;
         private Button bt_exit;
+        private Button bt_save;
+        private Button bt_load;
     }
 }

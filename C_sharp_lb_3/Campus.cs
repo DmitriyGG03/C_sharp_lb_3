@@ -73,7 +73,7 @@ public static class Campus
         }
     }
 
-    public static void ReadFiles()
+    public static void WritingInFiles()
     {
         DirectoryInfo dirInfo = new DirectoryInfo(@"..\..\..\CampusData");
         if (!dirInfo.Exists)
@@ -109,6 +109,11 @@ public static class Campus
             writer.WriteLineAsync();
         }
 
+
+    }
+
+    public static void ReadingFromFiles()
+    {
 
     }
 }

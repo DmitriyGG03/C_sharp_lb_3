@@ -5,10 +5,10 @@ public class Room
     public int ID { get; set; } //Must be unique
     public RoomType roomType { get; set; }
     public int Rent { get; set; }
-    public int ResidentsNumber { get => IDrecordBooks.Count}
+    public int ResidentsNumber { get => IDrecordBooks.Count; }
     public List<int> IDrecordBooks { get; set; } = new List<int>(0);
 
-    Room(int? ID, RoomType rt, List<int> iDrecordBooks)
+    public Room(int? ID, RoomType rt, List<int>? iDrecordBooks)
     {
         if(ID != null) this.ID = (int)ID;
         else ID = CreateRoomID(); //Create        

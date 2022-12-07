@@ -27,20 +27,30 @@ namespace C_sharp_lb_2
         private void bt_CreateHostel_Click(object sender, EventArgs e)
         {
             Hide();
-            CreatingHostel newHostel = new CreatingHostel();
+            CreationHostel newHostel = new CreationHostel();
             newHostel.Show();
         }
 
         private void bt_hostelManager_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ManageHostels manageStudents = new ManageHostels();
+            CampusManagement manageStudents = new CampusManagement();
             manageStudents.Show();
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bt_save_Click(object sender, EventArgs e)
+        {
+            Campus.WritingInFiles();
+        }
+
+        private void bt_load_Click(object sender, EventArgs e)
+        {
+            Campus.ReadingFromFiles();
         }
     }
 }

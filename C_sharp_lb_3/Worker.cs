@@ -1,4 +1,6 @@
-﻿namespace C_sharp_lb_3;
+﻿using System.Text;
+
+namespace C_sharp_lb_3;
 public class Worker
 {
     private int salary;
@@ -20,25 +22,39 @@ public class Worker
         get => individualTaxNumber;
         set
         {
-            int temp;
-            if (value.Length == 10 && int.TryParse(value, out temp)) individualTaxNumber = value;
+            long temp;
+            if (value.Length == 10 && long.TryParse(value, out temp)) individualTaxNumber = value;
             else throw new Exception("IndividualTaxNumber error");
         }
     }
 
-    Worker(string[] name, Position position, int salary, string IndividualTaxNumber)
+    public Worker(string[] name, Position position, string? individualTaxNumber)
     {
         Name = name;
         this.position = position;
-        Salary = salary;
-        this.IndividualTaxNumber = IndividualTaxNumber;
+        Salary = (int)position;
+        if (individualTaxNumber is null) IndividualTaxNumber = GenerationTaxNumber();
+        else individualTaxNumber = IndividualTaxNumber.ToString();
+    }
+
+    private string GenerationTaxNumber()
+    {
+        return LongRandom(1000000000L, 9999999999L, new Random()).ToString();
+    }
+    private long LongRandom(long min, long max, Random rand)
+    {
+        long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
+        result = (result << 32);
+        result = result | (long)rand.Next((Int32)min, (Int32)max);
+        return result;
     }
 }
 
+
 public enum Position
 {
-    Commandant,
-    Head_of_economic_part,
-    Guard,
-    Cleaner
+    Commandant = 30000,
+    Head_of_economic_part = 25000,
+    Guard = 10000,
+    Cleaner = 8000
 }
