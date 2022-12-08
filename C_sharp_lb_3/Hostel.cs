@@ -10,7 +10,7 @@ public class Hostel : ICloneable
     public double hostelProfit { get; set; }
 
     private List<Worker> Workers { get; set; } = new List<Worker>(0);
-    private List<Student> Students { get; set; } = new List<Student>(0);
+    public List<Student> Students { get; set; } = new List<Student>(0); // Змінив пріоритет доступу, але можна перемістити метод з CM form і залишити його незмінним
     public List<Room> Rooms { get; set; } = new List<Room>(0);
     public int StuffNumber { get => Workers.Count; }
     public int StudentAmount { get => Students.Count; }

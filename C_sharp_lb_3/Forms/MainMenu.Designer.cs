@@ -90,7 +90,7 @@
             this.bt_hostelManager.Name = "bt_hostelManager";
             this.bt_hostelManager.Size = new System.Drawing.Size(310, 45);
             this.bt_hostelManager.TabIndex = 3;
-            this.bt_hostelManager.Text = "Управління гуртожитками";
+            this.bt_hostelManager.Text = "Управління кампусом";
             this.bt_hostelManager.UseVisualStyleBackColor = false;
             this.bt_hostelManager.Click += new System.EventHandler(this.bt_hostelManager_Click);
             // 

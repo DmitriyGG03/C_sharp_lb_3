@@ -21,9 +21,9 @@ public class Room
     public RoomType roomType { get; set; }
     public int Rent { get; set; }
     public int ResidentsNumber { get => IDrecordBooks.Count; }
-    public List<int> IDrecordBooks { get; set; } = new List<int>(0);
+    public List<string> IDrecordBooks { get; set; } = new List<string>(0);
 
-    public Room(int? ID, RoomType rt, List<int>? iDrecordBooks)
+    public Room(int? ID, RoomType rt, List<string>? iDrecordBooks)
     {
         if (ID != null) this.ID = (int)ID;
         else this.ID = CreateRoomID();     
