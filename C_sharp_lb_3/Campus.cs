@@ -85,19 +85,19 @@ public static class Campus
         {
             if (hostels.Count != 0)
             {
-                foreach (Hostel host in hostels)
+                foreach (Hostel hostel in Campus.hostels)
                 {
-                    writer.WriteAsync("Hotels");
-                    writer.WriteAsync($"{host.ID}\n{host.universityName}\n{host.hostelAddress}\n");
-                    if (host.Rooms.Count != 0)
-                    {                        
-                        foreach(Room rms in host.Rooms)
-                        {
-                            writer.WriteAsync("Rooms\n");
-                            writer.WriteAsync($"{rms.ID}\n{rms.roomType}");
-                            if(rms.IDrecordBooks.Count != 0)
+                    writer.WriteAsync("Hotels\n");
+                    writer.WriteAsync($"{hostel.ID}\n{hostel.universityName}\n{hostel.hostelAddress}\n");
+                    if (hostel.Rooms.Count != 0)
+                    {
+                        writer.WriteAsync("Rooms\n");
+                        foreach (Room room in hostel.Rooms)
+                        {                            
+                            writer.WriteAsync($"{room.ID}\n{room.roomType}\n");
+                            if(room.IDrecordBooks.Count != 0)
                             {
-                                foreach(int i in rms.IDrecordBooks)
+                                foreach(int i in room.IDrecordBooks)
                                 {
                                     writer.WriteLineAsync(i.ToString());
                                 }                                

@@ -1,8 +1,23 @@
 ﻿namespace C_sharp_lb_3;
+using Hostels;
 
 public class Room
 {
-    public int ID { get; set; } //Must be unique
+    private int id;
+
+    public int ID
+    {
+        get => id;
+        set
+        {
+            bool finded = false;
+            foreach (Hostel hostel in Campus.hostels)
+                foreach (Room room in hostel.Rooms)
+                    if (room.ID == value) finded = true;
+            if (!finded) id = value;
+            else throw new Exception("Room ID error. Finded matching!");
+        }
+    } //Must be unique
     public RoomType roomType { get; set; }
     public int Rent { get; set; }
     public int ResidentsNumber { get => IDrecordBooks.Count; }
@@ -10,8 +25,8 @@ public class Room
 
     public Room(int? ID, RoomType rt, List<int>? iDrecordBooks)
     {
-        if(ID != null) this.ID = (int)ID;
-        else ID = CreateRoomID(); //Create        
+        if (ID != null) this.ID = (int)ID;
+        else this.ID = CreateRoomID();     
         roomType = rt;
         Rent = 2400 / (int)rt;
         if (iDrecordBooks is not null) IDrecordBooks = iDrecordBooks;

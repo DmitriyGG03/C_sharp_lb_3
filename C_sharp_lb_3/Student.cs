@@ -29,7 +29,6 @@ public class Student
         this.Group = Group;
         if (iDrecordBook == null || iDrecordBook == "") IDrecordBook = GeneratingIDrecordBook();
         else IDrecordBook = iDrecordBook;
-        this.IDrecordBook = IDrecordBook;
         this.Course = Course;
     }
 

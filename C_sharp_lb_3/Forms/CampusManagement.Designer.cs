@@ -60,12 +60,12 @@
             this.rb_month = new System.Windows.Forms.RadioButton();
             this.rb_6month = new System.Windows.Forms.RadioButton();
             this.gb_studentManager = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bt_st_relocate = new System.Windows.Forms.Button();
+            this.tb_Room_num_2 = new System.Windows.Forms.TextBox();
+            this.tb_Room_num_1 = new System.Windows.Forms.TextBox();
+            this.tb_Record_ID = new System.Windows.Forms.TextBox();
+            this.bt_st_del = new System.Windows.Forms.Button();
+            this.bt_st_add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1)).BeginInit();
             this.gb_CreatingStudent.SuspendLayout();
             this.gb_workerManager.SuspendLayout();
@@ -201,7 +201,7 @@
             this.tb_st_sex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_st_sex.Multiline = true;
             this.tb_st_sex.Name = "tb_st_sex";
-            this.tb_st_sex.PlaceholderText = "Стать (М,Ж)";
+            this.tb_st_sex.PlaceholderText = "Стать (Ч,Ж)";
             this.tb_st_sex.Size = new System.Drawing.Size(200, 30);
             this.tb_st_sex.TabIndex = 19;
             // 
@@ -476,12 +476,12 @@
             // 
             // gb_studentManager
             // 
-            this.gb_studentManager.Controls.Add(this.button3);
-            this.gb_studentManager.Controls.Add(this.textBox10);
-            this.gb_studentManager.Controls.Add(this.textBox9);
-            this.gb_studentManager.Controls.Add(this.textBox1);
-            this.gb_studentManager.Controls.Add(this.button1);
-            this.gb_studentManager.Controls.Add(this.button2);
+            this.gb_studentManager.Controls.Add(this.bt_st_relocate);
+            this.gb_studentManager.Controls.Add(this.tb_Room_num_2);
+            this.gb_studentManager.Controls.Add(this.tb_Room_num_1);
+            this.gb_studentManager.Controls.Add(this.tb_Record_ID);
+            this.gb_studentManager.Controls.Add(this.bt_st_del);
+            this.gb_studentManager.Controls.Add(this.bt_st_add);
             this.gb_studentManager.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gb_studentManager.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.gb_studentManager.Location = new System.Drawing.Point(22, 269);
@@ -491,91 +491,94 @@
             this.gb_studentManager.TabStop = false;
             this.gb_studentManager.Text = "Управління студентами";
             // 
-            // button3
+            // bt_st_relocate
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkOrange;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button3.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(419, 118);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(350, 34);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Переселити студента";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bt_st_relocate.BackColor = System.Drawing.Color.DarkOrange;
+            this.bt_st_relocate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_st_relocate.FlatAppearance.BorderSize = 0;
+            this.bt_st_relocate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.bt_st_relocate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.bt_st_relocate.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bt_st_relocate.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bt_st_relocate.Location = new System.Drawing.Point(419, 118);
+            this.bt_st_relocate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_st_relocate.Name = "bt_st_relocate";
+            this.bt_st_relocate.Size = new System.Drawing.Size(350, 34);
+            this.bt_st_relocate.TabIndex = 24;
+            this.bt_st_relocate.Text = "Переселити студента";
+            this.bt_st_relocate.UseVisualStyleBackColor = false;
+            this.bt_st_relocate.Click += new System.EventHandler(this.bt_st_relocate_Click);
             // 
-            // textBox10
+            // tb_Room_num_2
             // 
-            this.textBox10.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox10.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox10.Location = new System.Drawing.Point(7, 118);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.PlaceholderText = "Номер кімнати для переселення";
-            this.textBox10.Size = new System.Drawing.Size(406, 34);
-            this.textBox10.TabIndex = 21;
+            this.tb_Room_num_2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_Room_num_2.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_Room_num_2.Location = new System.Drawing.Point(7, 118);
+            this.tb_Room_num_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Room_num_2.Multiline = true;
+            this.tb_Room_num_2.Name = "tb_Room_num_2";
+            this.tb_Room_num_2.PlaceholderText = "Номер кімнати для переселення";
+            this.tb_Room_num_2.Size = new System.Drawing.Size(406, 34);
+            this.tb_Room_num_2.TabIndex = 21;
             // 
-            // textBox9
+            // tb_Room_num_1
             // 
-            this.textBox9.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox9.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox9.Location = new System.Drawing.Point(7, 71);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.PlaceholderText = "Номер кімнати для поселення/переселення";
-            this.textBox9.Size = new System.Drawing.Size(406, 34);
-            this.textBox9.TabIndex = 20;
+            this.tb_Room_num_1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_Room_num_1.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_Room_num_1.Location = new System.Drawing.Point(7, 71);
+            this.tb_Room_num_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Room_num_1.Multiline = true;
+            this.tb_Room_num_1.Name = "tb_Room_num_1";
+            this.tb_Room_num_1.PlaceholderText = "Номер кімнати для поселення/переселення";
+            this.tb_Room_num_1.Size = new System.Drawing.Size(406, 34);
+            this.tb_Room_num_1.TabIndex = 20;
             // 
-            // textBox1
+            // tb_Record_ID
             // 
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(7, 33);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Ідентифікатор залікової книжки";
-            this.textBox1.Size = new System.Drawing.Size(406, 34);
-            this.textBox1.TabIndex = 19;
+            this.tb_Record_ID.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_Record_ID.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_Record_ID.Location = new System.Drawing.Point(7, 33);
+            this.tb_Record_ID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Record_ID.Multiline = true;
+            this.tb_Record_ID.Name = "tb_Record_ID";
+            this.tb_Record_ID.PlaceholderText = "Ідентифікатор залікової книжки";
+            this.tb_Record_ID.Size = new System.Drawing.Size(406, 34);
+            this.tb_Record_ID.TabIndex = 19;
             // 
-            // button1
+            // bt_st_del
             // 
-            this.button1.BackColor = System.Drawing.Color.Tomato;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(601, 33);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(168, 72);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Видалити студента";
-            this.button1.UseVisualStyleBackColor = false;
+            this.bt_st_del.BackColor = System.Drawing.Color.Tomato;
+            this.bt_st_del.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_st_del.FlatAppearance.BorderSize = 0;
+            this.bt_st_del.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.bt_st_del.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.bt_st_del.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bt_st_del.ForeColor = System.Drawing.SystemColors.Control;
+            this.bt_st_del.Location = new System.Drawing.Point(601, 33);
+            this.bt_st_del.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_st_del.Name = "bt_st_del";
+            this.bt_st_del.Size = new System.Drawing.Size(168, 72);
+            this.bt_st_del.TabIndex = 17;
+            this.bt_st_del.Text = "Видалити студента";
+            this.bt_st_del.UseVisualStyleBackColor = false;
+            this.bt_st_del.Click += new System.EventHandler(this.bt_st_del_Click);
             // 
-            // button2
+            // bt_st_add
             // 
-            this.button2.BackColor = System.Drawing.Color.LimeGreen;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(419, 33);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 72);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Додати студента";
-            this.button2.UseVisualStyleBackColor = false;
+            this.bt_st_add.BackColor = System.Drawing.Color.LimeGreen;
+            this.bt_st_add.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_st_add.FlatAppearance.BorderSize = 0;
+            this.bt_st_add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.bt_st_add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.bt_st_add.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bt_st_add.Location = new System.Drawing.Point(419, 33);
+            this.bt_st_add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_st_add.Name = "bt_st_add";
+            this.bt_st_add.Size = new System.Drawing.Size(176, 72);
+            this.bt_st_add.TabIndex = 15;
+            this.bt_st_add.Text = "Додати студента";
+            this.bt_st_add.UseVisualStyleBackColor = false;
+            this.bt_st_add.Click += new System.EventHandler(this.bt_st_add_Click);
             // 
             // CampusManagement
             // 
@@ -636,8 +639,8 @@
         private RadioButton rb_month;
         private RadioButton rb_6month;
         private GroupBox gb_studentManager;
-        private Button button1;
-        private Button button2;
+        private Button bt_st_del;
+        private Button bt_st_add;
         private TextBox tb_st_sex;
         private TextBox tb_st_ID;
         private TextBox tb_st_course;
@@ -645,10 +648,10 @@
         private TextBox tb_st_faculty;
         private TextBox tb_st_patronymic;
         private TextBox tb_st_surname;
-        private Button button3;
-        private TextBox textBox10;
-        private TextBox textBox9;
-        private TextBox textBox1;
+        private Button bt_st_relocate;
+        private TextBox tb_Room_num_2;
+        private TextBox tb_Room_num_1;
+        private TextBox tb_Record_ID;
         private TextBox textBox11;
         private TextBox textBox12;
         private GroupBox gb_radioPosition;

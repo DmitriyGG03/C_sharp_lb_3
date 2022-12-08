@@ -66,14 +66,26 @@ namespace C_sharp_lb_2.Forms
         {
             foreach (string str in arr)
             {
-                if ((str == "" || str is null) && str != tb_st_ID.Text) return false;
+                if (str == "" || str is null) return false;
+            }
+            return true;
+        }
+
+        private bool CheckArrayIDMatchingValues(string ID)
+        {
+            if (Campus.CampusStudents.Count > 0)
+            {
+                foreach (Student student in Campus.CampusStudents)
+                {
+                    if (student.IDrecordBook == ID) return false;
+                }
             }
             return true;
         }
 
         private void bt_addStudents_Click(object sender, EventArgs e)
         {
-            string[] arrString = new string[8] // Заносимо значення з полів вводу в масив
+            string[] arrString = new string[7] // Заносимо значення з полів вводу в масив
             {
                 tb_st_name.Text,
                 tb_st_surname.Text,
@@ -81,26 +93,52 @@ namespace C_sharp_lb_2.Forms
                 tb_st_faculty.Text,
                 tb_st_group.Text,
                 tb_st_course.Text,
-                tb_st_ID.Text,
                 tb_st_sex.Text
             };
+            bool ch_ok = true;
+            bool id_ok = false;
+            char ch = ' ';
 
-            if (CheckingStringInputValues(arrString) && tb_st_sex.Text.Length == 1 && Enum.IsDefined(typeof(Sex), tb_st_sex.Text.ToCharArray()) &&
+            if (tb_st_ID.Text.Length != 0)
+                if (tb_st_ID.Text.Length != 8 || !int.TryParse(tb_st_ID.Text, out int num)) MessageBox.Show($"Перевірте правильність вводу ідентифікатора!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else if (!CheckArrayIDMatchingValues(tb_st_ID.Text)) MessageBox.Show($"Такий ідентифікатор вже існує!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else id_ok = true;
+            else id_ok = true;
+
+            if (tb_st_sex.Text.Length == 1) ch = tb_st_sex.Text[0];
+            else ch_ok = false;
+
+            if (CheckingStringInputValues(arrString) && id_ok && ch_ok && Enum.IsDefined(typeof(Sex), (Sex)ch) &&
                 Enum.IsDefined(typeof(CourseNumber), Convert.ToInt32(tb_st_course.Text))) // Перевіряємо масив на пусті значення та звіряємо значення 
             {
+
                 Enum.TryParse(tb_st_sex.Text, out Sex s);
                 Enum.TryParse(tb_st_course.Text, out CourseNumber c);
                 Campus.CampusStudents.Add(new Student(new string[] { tb_st_name.Text, tb_st_surname.Text, tb_st_patronymic.Text }, tb_st_faculty.Text, s, tb_st_group.Text, tb_st_ID.Text, c));
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append(Campus.CampusStudents[^1].FullName[2] + " ");
                 sb.Append(Campus.CampusStudents[^1].FullName[1] + " ");
-                sb.Append(Campus.CampusStudents[^1].FullName[3]);
+                sb.Append(Campus.CampusStudents[^1].FullName[0] + " ");
+                sb.Append(Campus.CampusStudents[^1].FullName[2]);
                 MessageBox.Show($"Студент з ім'ям {sb.ToString()}, \nщо вчиться на факультеті {Campus.CampusStudents[^1].Faculty} в групі {Campus.CampusStudents[^1].Group} на {Campus.CampusStudents[^1].Course} курсі був успішно створений. " +
                     $"\nНомер залікової книжки: {Campus.CampusStudents[^1].IDrecordBook}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else MessageBox.Show($"Перевірте правильність вводу даних!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void bt_st_add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_st_del_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_st_relocate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
