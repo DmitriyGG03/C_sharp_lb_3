@@ -38,7 +38,7 @@ public class Student
 
 public enum Sex
 {
-    Male = 'М',
+    Male = 'Ч',
     Female = 'Ж'
 }
 

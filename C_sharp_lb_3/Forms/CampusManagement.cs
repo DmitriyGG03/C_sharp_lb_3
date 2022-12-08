@@ -1,6 +1,7 @@
 ﻿
 using C_sharp_lb_3;
 using Hostels;
+using System.Text;
 
 namespace C_sharp_lb_2.Forms
 {
@@ -65,7 +66,7 @@ namespace C_sharp_lb_2.Forms
         {
             foreach (string str in arr)
             {
-                if ((str == "" || str is null) && str == tb_st_ID.Text) return false;
+                if ((str == "" || str is null) && str != tb_st_ID.Text) return false;
             }
             return true;
         }
@@ -84,13 +85,22 @@ namespace C_sharp_lb_2.Forms
                 tb_st_sex.Text
             };
 
-            if (CheckingStringInputValues(arrString) && Enum.IsDefined(typeof(Sex), tb_st_sex.Text) &&
+            if (CheckingStringInputValues(arrString) && tb_st_sex.Text.Length == 1 && Enum.IsDefined(typeof(Sex), tb_st_sex.Text.ToCharArray()) &&
                 Enum.IsDefined(typeof(CourseNumber), Convert.ToInt32(tb_st_course.Text))) // Перевіряємо масив на пусті значення та звіряємо значення 
             {
                 Enum.TryParse(tb_st_sex.Text, out Sex s);
                 Enum.TryParse(tb_st_course.Text, out CourseNumber c);
-                Campus.CampusStudents.Add(new Student(new string[] { tb_st_name.Text, tb_st_surname.Text, tb_st_patronymic.Text }, tb_st_faculty.Text, s, tb_st_group.Text, null, c));
+                Campus.CampusStudents.Add(new Student(new string[] { tb_st_name.Text, tb_st_surname.Text, tb_st_patronymic.Text }, tb_st_faculty.Text, s, tb_st_group.Text, tb_st_ID.Text, c));
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Campus.CampusStudents[^1].FullName[2] + " ");
+                sb.Append(Campus.CampusStudents[^1].FullName[1] + " ");
+                sb.Append(Campus.CampusStudents[^1].FullName[3]);
+                MessageBox.Show($"Студент з ім'ям {sb.ToString()}, \nщо вчиться на факультеті {Campus.CampusStudents[^1].Faculty} в групі {Campus.CampusStudents[^1].Group} на {Campus.CampusStudents[^1].Course} курсі був успішно створений. " +
+                    $"\nНомер залікової книжки: {Campus.CampusStudents[^1].IDrecordBook}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else MessageBox.Show($"Перевірте правильність вводу даних!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
     }
 }
