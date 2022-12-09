@@ -35,7 +35,21 @@ namespace C_sharp_lb_2.Forms
         }
         private void bt_showInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(hostel.ToString(), $"Інформація про гуртожиток № {hostel.ID}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult dr = MessageBox.Show(hostel.ToString() + "Чи хочете ви переглянути список студентів гуртожитку?", $"Інформація про гуртожиток № {hostel.ID}", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                if (hostel.Students.Count == 0) MessageBox.Show($"В гуртожитку не проживає ні одного студента!", "Упс", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (Student student in hostel.Students)
+                    {
+                        sb.Append(student.FullName[1] + " " + student.FullName[0] + " " + student.FullName[2] + " з ІЗК: " + student.IDrecordBook + "\n");
+                    }
+                    MessageBox.Show(sb.ToString(), "Список студентів", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
         }
 
         private void bt_calcProfit_Click(object sender, EventArgs e)
@@ -50,7 +64,11 @@ namespace C_sharp_lb_2.Forms
         {
             foreach (string str in arr)
             {
-                if (str == "" || str is null) return false;
+                if (str == "" || str is null)
+                {
+                    MessageBox.Show($"Введіть обов'язкові значення!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             return true;
         }
@@ -120,6 +138,7 @@ namespace C_sharp_lb_2.Forms
                     return true;
                 }
             }
+            MessageBox.Show($"Кімнати з таким номером не існує в цьому гутожитку!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             resRoom = null;
             return false;
         }
@@ -140,7 +159,7 @@ namespace C_sharp_lb_2.Forms
             return true;
         }
 
-        private bool verificationStudentExistence(string numIdBook, out Student? resStudent)
+        private bool VerificationStudentExistence(string numIdBook, out Student? resStudent)
         {
             foreach (Student student in Campus.CampusStudents) // Перевіряємо, що студент існує в списках кампуса
             {
@@ -174,7 +193,7 @@ namespace C_sharp_lb_2.Forms
             {
                 foreach (Student st in hostel.Students) // Шукаэмо першого студента, що проживає в кімнаті в списку студентів гуртожитку
                 {
-                    if(st.IDrecordBook == room.IDrecordBooks[0]) 
+                    if (st.IDrecordBook == room.IDrecordBooks[0])
                     {
                         if (st.sex != student.sex) // Якщо стать цього студента не збігається зі статтю додаваємого, то виводимо помилку
                         {
@@ -188,40 +207,95 @@ namespace C_sharp_lb_2.Forms
             return true;
         }
 
-        private void bt_st_add_Click(object sender, EventArgs e)
+        private bool CheckStudentLiveInRoom(Room room, Student student)
         {
+            if (room.IDrecordBooks.find(student.IDrecordBook)) return true;
+            else
+            {
+                MessageBox.Show($"Даний студент не проживає в даній кімнаті!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            
+        }
+
+        private bool StudentCheckingManager(int switching, out Student? st, out Room? rm, out Room? rm2, ref string[] arrString)
+        {
+            st = null;
+            rm = null;
+            rm2 = null;
             if (hostel is null) // Перевірка на 
             {
                 MessageBox.Show($"Введіть номер гуртожитку!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
+            List<int>? intNumbers = new List<int>(0);
+            Room? room2 = null;
 
+            if (CheckingStringInputValuesOnNull(arrString)  // Перевірка на те, що всі дані були введені
+                && CheckingOnNumberValues(arrString, ref intNumbers) // Перевірка на те, що введені дані є числами 
+                && CheckingRoomExistence(intNumbers[1], out Room? room) // Перевірка на те, що вказана кімната існує
+                && (switching != 3 || CheckingRoomExistence(intNumbers[2], out room2)) // Перевірка на те, що друга вказана кімната існує 
+                && VerificationStudentExistence(tb_Record_ID.Text, out Student? student) // Перевірка на те, що вказаний студент існує
+                && (switching != 2 || CheckingFreePlaceSexualCompatibility(room, student)) // Перевірка на відповідність статі та наявності вільного місця в кімнаті  
+                && (switching != 3 || CheckStudentLiveInRoom(room, student) && CheckingFreePlaceSexualCompatibility(room2, student)) // Перевірка на відповідність статі та наявності вільного місця в кімнаті  
+                )
+            {
+                st = student;
+                rm = room;
+                if (room2 is not null) rm2 = room2;
+                return true;
+            }
+            else return false;
+        }
+
+        private void bt_st_add_Click(object sender, EventArgs e)
+        {
             string[] arrString = new string[2] // Заносимо значення з полів вводу в масив
             {
                 tb_Record_ID.Text,
                 tb_Room_num_1.Text
             };
-            List<int>? intNumbers = new List<int>(0);
 
-            if (CheckingStringInputValuesOnNull(arrString)  // Перевірка на те, що всі дані були введені
-                && CheckingOnNumberValues(arrString, ref intNumbers) // Перевірка на те, що введені дані є числами 
-                && CheckingRoomExistence(intNumbers[1], out Room? room)
-                && verificationStudentExistence(tb_Record_ID.Text, out Student? student)
-                && CheckingFreePlaceSexualCompatibility(room, student))
+            if (StudentCheckingManager(1, out Student? student, out Room? room, out Room? room2, ref arrString)) // Перевірка на відповідність статі та наявності вільного місця в кімнаті
             {
-
+                hostel.Students.Add(student);
+                room.IDrecordBooks.Add(tb_Record_ID.Text);
+                MessageBox.Show($"Студент з ідентифікатором залікової книжки: {student.IDrecordBook}, \nбув доданий до гуртожитку номер {hostel.ID} до кімнати номер {room.ID}.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                hostel.CalcProfit();
             }
-            ;
         }
 
         private void bt_st_del_Click(object sender, EventArgs e)
         {
-
+            string[] arrString = new string[2] // Заносимо значення з полів вводу в масив
+            {
+                tb_Record_ID.Text,
+                tb_Room_num_1.Text
+            };
+            if (StudentCheckingManager(1, out Student? student, out Room? room, out Room? room2, ref arrString)) // Перевірка на відповідність статі та наявності вільного місця в кімнаті
+            {
+                hostel.Students.Remove(student);
+                room.IDrecordBooks.Remove(tb_Record_ID.Text);
+                MessageBox.Show($"Студент з ідентифікатором залікової книжки: {student.IDrecordBook}, \nбув видалений з гуртожитку номер {hostel.ID}, з кімнати номер {room.ID}.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                hostel.CalcProfit();
+            }
         }
 
         private void bt_st_relocate_Click(object sender, EventArgs e)
         {
-
+            string[] arrString = new string[3] // Заносимо значення з полів вводу в масив
+            {
+                tb_Record_ID.Text,
+                tb_Room_num_1.Text,
+                tb_Room_num_2.Text
+            };
+            if (StudentCheckingManager(3, out Student? student, out Room? room, out Room? room2, ref arrString)) // Перевірка на відповідність статі та наявності вільного місця в кімнаті
+            {
+                room.IDrecordBooks.Remove(tb_Record_ID.Text);
+                room2.IDrecordBooks.Add(tb_Record_ID.Text);
+                MessageBox.Show($"Студент з ідентифікатором залікової книжки: {student.IDrecordBook}, \nбув видалений з кімнати номер {room.ID} та поселений в кімнату номер {room2.ID}.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                hostel.CalcProfit();
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ public class Hostel : ICloneable
 
     public Hostel(int? ID, string universityName, string hostelAddress, List<Worker> workers, List<Room> rooms)
     {
-        if (ID is null) this.ID = Campus.GetID();
+        if (ID is null) this.ID = Campus.GetID(); // Якщо не вказано, то генеруємо
         else this.ID = (int)ID;
         this.universityName = universityName;
         this.hostelAddress = hostelAddress;

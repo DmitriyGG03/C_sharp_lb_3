@@ -601,7 +601,6 @@
             this.MinimumSize = new System.Drawing.Size(834, 754);
             this.Name = "CampusManagement";
             this.Text = "ManageStudents";
-            this.Load += new System.EventHandler(this.ManageHostels_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb_1)).EndInit();
             this.gb_CreatingStudent.ResumeLayout(false);
             this.gb_CreatingStudent.PerformLayout();

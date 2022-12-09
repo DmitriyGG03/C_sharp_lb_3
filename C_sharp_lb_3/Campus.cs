@@ -97,10 +97,10 @@ public static class Campus
                             writer.WriteAsync($"{room.ID}\n{room.roomType}\n");
                             if(room.IDrecordBooks.Count != 0)
                             {
-                                foreach(int i in room.IDrecordBooks)
+                                foreach(string i in room.IDrecordBooks)
                                 {
-                                    writer.WriteLineAsync(i.ToString());
-                                }                                
+                                    writer.WriteLineAsync(i);
+                                }
                             }
                         }
                     }
