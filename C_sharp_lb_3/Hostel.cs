@@ -9,7 +9,7 @@ public class Hostel : ICloneable
     public string hostelAddress { get; set; }
     public double hostelProfit { get; set; }
 
-    private List<Worker> Workers { get; set; } = new List<Worker>(0);
+    public List<Worker> Workers { get; set; } = new List<Worker>(0);
     public List<Student> Students { get; set; } = new List<Student>(0); // Змінив пріоритет доступу, але можна перемістити метод з CM form і залишити його незмінним
     public List<Room> Rooms { get; set; } = new List<Room>(0);
     public int StuffNumber { get => Workers.Count; }
@@ -52,6 +52,23 @@ public class Hostel : ICloneable
         sb.Append($"Кількість студентів:\t{StudentAmount}\n");
         sb.Append($"Прибуток:\t\t{hostelProfit}\n");
         return sb.ToString();
+    }
+
+    public bool CheckArrayITNMatchingValues(string ITN)
+    {
+        if (Campus.CampusStudents.Count > 0)
+        {
+            foreach (Worker worker in Workers)
+            {
+                if (worker.IndividualTaxNumber == ITN) return true;
+            }
+        }
+        return false;
+    }
+
+    public void WorkerCreating(string[] name, Position position, string? individualTaxNumber)
+    {
+        Workers.Add(new Worker(name, position, individualTaxNumber));
     }
 
     public object Clone()

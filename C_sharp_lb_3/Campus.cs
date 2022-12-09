@@ -93,11 +93,11 @@ public static class Campus
                     {
                         writer.WriteAsync("Rooms\n");
                         foreach (Room room in hostel.Rooms)
-                        {                            
+                        {
                             writer.WriteAsync($"{room.ID}\n{room.roomType}\n");
-                            if(room.IDrecordBooks.Count != 0)
+                            if (room.IDrecordBooks.Count != 0)
                             {
-                                foreach(string i in room.IDrecordBooks)
+                                foreach (string i in room.IDrecordBooks)
                                 {
                                     writer.WriteLineAsync(i);
                                 }
@@ -110,12 +110,76 @@ public static class Campus
             writer.WriteLineAsync();
         }
 
+        using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Students.txt", false))
+        {
+            foreach (Hostel hostel in Campus.hostels)
+            {
+                if (hostel.Students.Count != 0)
+                {
+                    writer.WriteAsync($"{hostel.ID}\n");
+                    foreach (Student student in hostel.Students)
+                    {
+                        writer.WriteAsync($"{student.FullName[0]}\n{student.FullName[1]}\n{student.FullName[2]}\n" +
+                            $"{student.Faculty}\n{student.Group}\n{student.sex}\n{student.Course}\n{student.IDrecordBook}\n");
+                    }
+                }
+            }
+        }
 
+        using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Workers.txt", false))
+        {
+            foreach (Hostel hostel in Campus.hostels)
+            {
+                if (hostel.Workers.Count != 0)
+                {
+                    writer.WriteAsync($"{hostel.ID}\n");
+                    foreach (Worker workers in hostel.Workers)
+                    {
+                        writer.WriteAsync($"{workers.Name[0]}\n{workers.Name[1]}\n{workers.position}\n" +
+                            $"{workers.IndividualTaxNumber}\n");
+                    }
+                }
+            }
+        }
+
+        using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Campus.txt", false))
+        {
+            if (CampusStudents.Count != 0)
+            {
+                writer.WriteAsync($"{CampusStudents.Count}\n");
+                foreach (Student student in CampusStudents)
+                {
+                    writer.WriteAsync($"{student.FullName[0]}\n{student.FullName[1]}\n{student.FullName[2]}\n" +
+                        $"{student.Faculty}\n{student.Group}\n{student.sex}\n{student.Course}\n{student.IDrecordBook}\n");
+                }
+            }
+            if (DeleteHostels.Count != 0)
+            {
+                writer.WriteAsync($"{DeleteHostels.Count}\n");
+                foreach (int numbers in DeleteHostels)
+                {
+                    writer.WriteAsync($"{numbers}\n");
+                }
+            }
+            if (DeletedID.Count != 0)
+            {
+                writer.WriteAsync($"{DeletedID.Count}\n");
+                foreach (int numbers in DeletedID)
+                {
+                    writer.WriteAsync($"{numbers}\n");
+                }
+            }
+            writer.WriteLine($"{LastID}");
+        }
     }
+
 
     public static void ReadingFromFiles()
     {
+        using (StreamReader reader = new StreamReader(@"..\..\..\CampusData\Data.txt", false))
+        {
 
+        }
     }
 
     public static long LongRandom(long min, long max, Random rand)
@@ -126,3 +190,5 @@ public static class Campus
         return result;
     }
 }
+
+

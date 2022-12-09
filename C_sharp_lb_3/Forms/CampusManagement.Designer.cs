@@ -46,14 +46,14 @@
             this.tb_st_surname = new System.Windows.Forms.TextBox();
             this.gb_workerManager = new System.Windows.Forms.GroupBox();
             this.gb_radioPosition = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.bt_delStuff = new System.Windows.Forms.Button();
+            this.rb_head_economic = new System.Windows.Forms.RadioButton();
+            this.rb_cleaner = new System.Windows.Forms.RadioButton();
+            this.rb_commendant = new System.Windows.Forms.RadioButton();
+            this.rb_guard = new System.Windows.Forms.RadioButton();
+            this.tb_staff_ITN = new System.Windows.Forms.TextBox();
+            this.tb_staff_surname = new System.Windows.Forms.TextBox();
+            this.tb_staff_name = new System.Windows.Forms.TextBox();
+            this.bt_addStuff = new System.Windows.Forms.Button();
             this.rb_year = new System.Windows.Forms.RadioButton();
             this.gb_calcProfits = new System.Windows.Forms.GroupBox();
             this.bt_calcProfit = new System.Windows.Forms.Button();
@@ -280,10 +280,10 @@
             // gb_workerManager
             // 
             this.gb_workerManager.Controls.Add(this.gb_radioPosition);
-            this.gb_workerManager.Controls.Add(this.textBox13);
-            this.gb_workerManager.Controls.Add(this.textBox11);
-            this.gb_workerManager.Controls.Add(this.textBox12);
-            this.gb_workerManager.Controls.Add(this.bt_delStuff);
+            this.gb_workerManager.Controls.Add(this.tb_staff_ITN);
+            this.gb_workerManager.Controls.Add(this.tb_staff_surname);
+            this.gb_workerManager.Controls.Add(this.tb_staff_name);
+            this.gb_workerManager.Controls.Add(this.bt_addStuff);
             this.gb_workerManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gb_workerManager.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gb_workerManager.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -296,10 +296,10 @@
             // 
             // gb_radioPosition
             // 
-            this.gb_radioPosition.Controls.Add(this.radioButton3);
-            this.gb_radioPosition.Controls.Add(this.radioButton4);
-            this.gb_radioPosition.Controls.Add(this.radioButton1);
-            this.gb_radioPosition.Controls.Add(this.radioButton2);
+            this.gb_radioPosition.Controls.Add(this.rb_head_economic);
+            this.gb_radioPosition.Controls.Add(this.rb_cleaner);
+            this.gb_radioPosition.Controls.Add(this.rb_commendant);
+            this.gb_radioPosition.Controls.Add(this.rb_guard);
             this.gb_radioPosition.Location = new System.Drawing.Point(262, 30);
             this.gb_radioPosition.Name = "gb_radioPosition";
             this.gb_radioPosition.Size = new System.Drawing.Size(303, 85);
@@ -307,106 +307,107 @@
             this.gb_radioPosition.TabStop = false;
             this.gb_radioPosition.Text = "Посада";
             // 
-            // radioButton3
+            // rb_head_economic
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton3.Location = new System.Drawing.Point(6, 26);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(105, 30);
-            this.radioButton3.TabIndex = 23;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Завгосп";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rb_head_economic.AutoSize = true;
+            this.rb_head_economic.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rb_head_economic.Location = new System.Drawing.Point(6, 26);
+            this.rb_head_economic.Name = "rb_head_economic";
+            this.rb_head_economic.Size = new System.Drawing.Size(105, 30);
+            this.rb_head_economic.TabIndex = 23;
+            this.rb_head_economic.TabStop = true;
+            this.rb_head_economic.Text = "Завгосп";
+            this.rb_head_economic.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // rb_cleaner
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton4.Location = new System.Drawing.Point(143, 52);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(160, 30);
-            this.radioButton4.TabIndex = 24;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Прибиральник";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rb_cleaner.AutoSize = true;
+            this.rb_cleaner.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rb_cleaner.Location = new System.Drawing.Point(143, 52);
+            this.rb_cleaner.Name = "rb_cleaner";
+            this.rb_cleaner.Size = new System.Drawing.Size(160, 30);
+            this.rb_cleaner.TabIndex = 24;
+            this.rb_cleaner.TabStop = true;
+            this.rb_cleaner.Text = "Прибиральник";
+            this.rb_cleaner.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rb_commendant
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.Location = new System.Drawing.Point(6, 52);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(131, 30);
-            this.radioButton1.TabIndex = 21;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Комендант";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rb_commendant.AutoSize = true;
+            this.rb_commendant.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rb_commendant.Location = new System.Drawing.Point(6, 52);
+            this.rb_commendant.Name = "rb_commendant";
+            this.rb_commendant.Size = new System.Drawing.Size(131, 30);
+            this.rb_commendant.TabIndex = 21;
+            this.rb_commendant.TabStop = true;
+            this.rb_commendant.Text = "Комендант";
+            this.rb_commendant.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rb_guard
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.Location = new System.Drawing.Point(143, 26);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(132, 30);
-            this.radioButton2.TabIndex = 22;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Охоронець";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rb_guard.AutoSize = true;
+            this.rb_guard.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rb_guard.Location = new System.Drawing.Point(143, 26);
+            this.rb_guard.Name = "rb_guard";
+            this.rb_guard.Size = new System.Drawing.Size(132, 30);
+            this.rb_guard.TabIndex = 22;
+            this.rb_guard.TabStop = true;
+            this.rb_guard.Text = "Охоронець";
+            this.rb_guard.UseVisualStyleBackColor = true;
             // 
-            // textBox13
+            // tb_staff_ITN
             // 
-            this.textBox13.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox13.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox13.Location = new System.Drawing.Point(6, 120);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.PlaceholderText = "Індивідуальний податковий номер (опціонально)";
-            this.textBox13.Size = new System.Drawing.Size(506, 30);
-            this.textBox13.TabIndex = 20;
+            this.tb_staff_ITN.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_staff_ITN.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_staff_ITN.Location = new System.Drawing.Point(6, 120);
+            this.tb_staff_ITN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_staff_ITN.Multiline = true;
+            this.tb_staff_ITN.Name = "tb_staff_ITN";
+            this.tb_staff_ITN.PlaceholderText = "Індивідуальний податковий номер (опціонально)";
+            this.tb_staff_ITN.Size = new System.Drawing.Size(506, 30);
+            this.tb_staff_ITN.TabIndex = 20;
             // 
-            // textBox11
+            // tb_staff_surname
             // 
-            this.textBox11.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox11.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox11.Location = new System.Drawing.Point(6, 82);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.PlaceholderText = "Прізвище";
-            this.textBox11.Size = new System.Drawing.Size(250, 30);
-            this.textBox11.TabIndex = 19;
+            this.tb_staff_surname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_staff_surname.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_staff_surname.Location = new System.Drawing.Point(6, 82);
+            this.tb_staff_surname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_staff_surname.Multiline = true;
+            this.tb_staff_surname.Name = "tb_staff_surname";
+            this.tb_staff_surname.PlaceholderText = "Прізвище";
+            this.tb_staff_surname.Size = new System.Drawing.Size(250, 30);
+            this.tb_staff_surname.TabIndex = 19;
             // 
-            // textBox12
+            // tb_staff_name
             // 
-            this.textBox12.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBox12.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox12.Location = new System.Drawing.Point(6, 48);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.PlaceholderText = "Ім\'я";
-            this.textBox12.Size = new System.Drawing.Size(250, 30);
-            this.textBox12.TabIndex = 18;
+            this.tb_staff_name.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_staff_name.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tb_staff_name.Location = new System.Drawing.Point(6, 48);
+            this.tb_staff_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_staff_name.Multiline = true;
+            this.tb_staff_name.Name = "tb_staff_name";
+            this.tb_staff_name.PlaceholderText = "Ім\'я";
+            this.tb_staff_name.Size = new System.Drawing.Size(250, 30);
+            this.tb_staff_name.TabIndex = 18;
             // 
-            // bt_delStuff
+            // bt_addStuff
             // 
-            this.bt_delStuff.BackColor = System.Drawing.Color.LimeGreen;
-            this.bt_delStuff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bt_delStuff.FlatAppearance.BorderSize = 0;
-            this.bt_delStuff.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.bt_delStuff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.bt_delStuff.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bt_delStuff.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.bt_delStuff.Location = new System.Drawing.Point(571, 39);
-            this.bt_delStuff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.bt_delStuff.Name = "bt_delStuff";
-            this.bt_delStuff.Size = new System.Drawing.Size(197, 111);
-            this.bt_delStuff.TabIndex = 17;
-            this.bt_delStuff.Text = "Додати робітника";
-            this.bt_delStuff.UseVisualStyleBackColor = false;
+            this.bt_addStuff.BackColor = System.Drawing.Color.LimeGreen;
+            this.bt_addStuff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_addStuff.FlatAppearance.BorderSize = 0;
+            this.bt_addStuff.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.bt_addStuff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.bt_addStuff.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bt_addStuff.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.bt_addStuff.Location = new System.Drawing.Point(571, 39);
+            this.bt_addStuff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bt_addStuff.Name = "bt_addStuff";
+            this.bt_addStuff.Size = new System.Drawing.Size(197, 111);
+            this.bt_addStuff.TabIndex = 17;
+            this.bt_addStuff.Text = "Додати робітника";
+            this.bt_addStuff.UseVisualStyleBackColor = false;
+            this.bt_addStuff.Click += new System.EventHandler(this.bt_addStuff_Click);
             // 
             // rb_year
             // 
@@ -628,11 +629,11 @@
         private Button bt_showInfo;
         private GroupBox gb_CreatingStudent;
         private GroupBox gb_workerManager;
-        private Button bt_delStuff;
-        private RadioButton radioButton1;
+        private Button bt_addStuff;
+        private RadioButton rb_commendant;
         private GroupBox gb_calcProfits;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
+        private RadioButton rb_head_economic;
+        private RadioButton rb_guard;
         private RadioButton rb_year;
         private Button bt_calcProfit;
         private RadioButton rb_month;
@@ -651,10 +652,10 @@
         private TextBox tb_Room_num_2;
         private TextBox tb_Room_num_1;
         private TextBox tb_Record_ID;
-        private TextBox textBox11;
-        private TextBox textBox12;
+        private TextBox tb_staff_surname;
+        private TextBox tb_staff_name;
         private GroupBox gb_radioPosition;
-        private RadioButton radioButton4;
-        private TextBox textBox13;
+        private RadioButton rb_cleaner;
+        private TextBox tb_staff_ITN;
     }
 }
