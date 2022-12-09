@@ -1,5 +1,6 @@
 ﻿using Hostels;
 using C_sharp_lb_3;
+using System.Collections.Generic;
 
 public static class Campus
 {
@@ -83,92 +84,67 @@ public static class Campus
         }
         using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Data.txt", false))
         {
-            if (hostels.Count != 0)
+            writer.WriteAsync($"{hostels.Count}\n");
+            for (int i = 0; i < hostels.Count; i++)
             {
-                foreach (Hostel hostel in Campus.hostels)
+                writer.WriteAsync($"{hostels[i].ID}\n{hostels[i].universityName}\n{hostels[i].hostelAddress}\n");
+                writer.WriteAsync($"{hostels[i].Rooms.Count}\n");
+                for (int j = 0; j < hostels[i].Rooms.Count; j++)
                 {
-                    writer.WriteAsync("Hotels\n");
-                    writer.WriteAsync($"{hostel.ID}\n{hostel.universityName}\n{hostel.hostelAddress}\n");
-                    if (hostel.Rooms.Count != 0)
+                    writer.WriteAsync($"{hostels[i].Rooms[j].ID}\n{hostels[i].Rooms[j].roomType}\n");
+                    writer.WriteAsync($"{hostels[i].Rooms[j].IDrecordBooks.Count}\n");
+                    for (int k = 0; k < hostels[i].Rooms[j].IDrecordBooks.Count; k++)
                     {
-                        writer.WriteAsync("Rooms\n");
-                        foreach (Room room in hostel.Rooms)
-                        {
-                            writer.WriteAsync($"{room.ID}\n{room.roomType}\n");
-                            if (room.IDrecordBooks.Count != 0)
-                            {
-                                foreach (string i in room.IDrecordBooks)
-                                {
-                                    writer.WriteLineAsync(i);
-                                }
-                            }
-                        }
+                        writer.WriteLineAsync(hostels[i].Rooms[j].IDrecordBooks[k]);
                     }
-                    writer.WriteLineAsync("\n\n");
                 }
             }
-            writer.WriteLineAsync();
         }
 
         using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Students.txt", false))
         {
-            foreach (Hostel hostel in Campus.hostels)
+            writer.WriteAsync($"{hostels.Count}\n");
+            for (int i = 0; i < hostels.Count; i++)
             {
-                if (hostel.Students.Count != 0)
+                writer.WriteAsync($"{hostels[i].ID}\n");
+                writer.WriteAsync($"{hostels[i].Students.Count}\n");
+                for (int j = 0; j < hostels[i].Students.Count; j++)
                 {
-                    writer.WriteAsync($"{hostel.ID}\n");
-                    foreach (Student student in hostel.Students)
-                    {
-                        writer.WriteAsync($"{student.FullName[0]}\n{student.FullName[1]}\n{student.FullName[2]}\n" +
-                            $"{student.Faculty}\n{student.Group}\n{student.sex}\n{student.Course}\n{student.IDrecordBook}\n");
-                    }
+                    writer.WriteAsync($"{hostels[i].Students[j].FullName[0]}\n{hostels[i].Students[j].FullName[1]}\n" +
+                        $"{hostels[i].Students[j].FullName[2]}\n{hostels[i].Students[j].Faculty}\n{hostels[i].Students[j].Group}\n" +
+                        $"{hostels[i].Students[j].sex}\n{hostels[i].Students[j].Course}\n{hostels[i].Students[j].IDrecordBook}\n");
                 }
             }
         }
 
         using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Workers.txt", false))
         {
-            foreach (Hostel hostel in Campus.hostels)
+            writer.WriteAsync($"{hostels.Count}\n");
+            for (int i = 0; i < hostels.Count; i++)
             {
-                if (hostel.Workers.Count != 0)
+                writer.WriteAsync($"{hostels[i].ID}\n");
+                writer.WriteAsync($"{hostels[i].Workers.Count}\n");
+                for (int j = 0; j < hostels[i].Workers.Count; j++)
                 {
-                    writer.WriteAsync($"{hostel.ID}\n");
-                    foreach (Worker workers in hostel.Workers)
-                    {
-                        writer.WriteAsync($"{workers.Name[0]}\n{workers.Name[1]}\n{workers.position}\n" +
-                            $"{workers.IndividualTaxNumber}\n");
-                    }
+                    writer.WriteAsync($"{hostels[i].Workers[j].Name[0]}\n{hostels[i].Workers[j].Name[1]}\n{hostels[i].Workers[j].position}\n" +
+                             $"{hostels[i].Workers[j].IndividualTaxNumber}\n");
                 }
             }
         }
 
         using (StreamWriter writer = new StreamWriter(@"..\..\..\CampusData\Campus.txt", false))
         {
-            if (CampusStudents.Count != 0)
-            {
-                writer.WriteAsync($"{CampusStudents.Count}\n");
-                foreach (Student student in CampusStudents)
-                {
-                    writer.WriteAsync($"{student.FullName[0]}\n{student.FullName[1]}\n{student.FullName[2]}\n" +
-                        $"{student.Faculty}\n{student.Group}\n{student.sex}\n{student.Course}\n{student.IDrecordBook}\n");
-                }
-            }
-            if (DeleteHostels.Count != 0)
-            {
-                writer.WriteAsync($"{DeleteHostels.Count}\n");
-                foreach (int numbers in DeleteHostels)
-                {
-                    writer.WriteAsync($"{numbers}\n");
-                }
-            }
-            if (DeletedID.Count != 0)
-            {
-                writer.WriteAsync($"{DeletedID.Count}\n");
-                foreach (int numbers in DeletedID)
-                {
-                    writer.WriteAsync($"{numbers}\n");
-                }
-            }
+            writer.WriteAsync($"{CampusStudents.Count}\n");
+            for (int i = 0; i < CampusStudents.Count; i++) writer.WriteAsync($"{CampusStudents[i].FullName[0]}\n{CampusStudents[i].FullName[1]}\n{CampusStudents[i].FullName[2]}\n" +
+                        $"{CampusStudents[i].Faculty}\n{CampusStudents[i].Group}\n{CampusStudents[i].sex}\n{CampusStudents[i].Course}\n" +
+                        $"{CampusStudents[i].IDrecordBook}\n");
+
+            writer.WriteAsync($"{DeleteHostels.Count}\n");
+            for (int i = 0; i < DeleteHostels.Count; i++) writer.WriteAsync($"{DeleteHostels[i]}\n");
+
+            writer.WriteAsync($"{DeletedID.Count}\n");
+            for (int i = 0; i < DeletedID.Count; i++) writer.WriteAsync($"{DeletedID[i]}\n");
+
             writer.WriteLine($"{LastID}");
         }
     }
@@ -176,9 +152,37 @@ public static class Campus
 
     public static void ReadingFromFiles()
     {
+        hostels.Clear();
+        CampusStudents.Clear();
+        DeleteHostels.Clear();
+        DeletedID.Clear();
+        LastID = 0;
+
         using (StreamReader reader = new StreamReader(@"..\..\..\CampusData\Data.txt", false))
         {
+            int hostelsNumber = Convert.ToInt32(reader.ReadLineAsync());
+            for (int i = 0; i < hostelsNumber; i++)
+            {
+                int ID = Convert.ToInt32(reader.ReadLineAsync());
+                string univName = reader.ReadLineAsync().ToString();
+                string hostleAddress = reader.ReadLineAsync().ToString();
+                List<Worker> workers = new List<Worker>(0);
+                List<Room> rooms = new List<Room>(0);
+                Campus.hostels.Add(new Hostel(ID, univName, hostleAddress, workers, rooms));
 
+                int roomsNumber = Convert.ToInt32(reader.ReadLineAsync());
+                for (int j = 0; j < roomsNumber; j++)
+                {
+                    int roomID = Convert.ToInt32(reader.ReadLineAsync());
+                    RoomType rt = (RoomType)Convert.ToInt32(reader.ReadLineAsync());
+                    hostels[i].Rooms.Add(new Room(roomID, rt, null));
+
+                    int booksNumber = Convert.ToInt32(reader.ReadLineAsync());
+                    for (int k = 0; k < booksNumber; k++)
+                    {
+                        hostels[i].Rooms[j].IDrecordBooks.Add(reader.ReadLineAsync().ToString());
+                    }
+            }
         }
     }
 
@@ -189,6 +193,6 @@ public static class Campus
         result = result | (long)rand.Next((Int32)min, (Int32)max);
         return result;
     }
-}
 
+}
 
