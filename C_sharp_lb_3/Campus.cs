@@ -1,6 +1,9 @@
 ﻿using Hostels;
 using C_sharp_lb_3;
 using System.Collections.Generic;
+using System.IO;
+using System.Drawing.Text;
+using Microsoft.VisualBasic.Devices;
 
 public static class Campus
 {
@@ -106,7 +109,6 @@ public static class Campus
             writer.WriteAsync($"{hostels.Count}\n");
             for (int i = 0; i < hostels.Count; i++)
             {
-                writer.WriteAsync($"{hostels[i].ID}\n");
                 writer.WriteAsync($"{hostels[i].Students.Count}\n");
                 for (int j = 0; j < hostels[i].Students.Count; j++)
                 {
@@ -122,7 +124,6 @@ public static class Campus
             writer.WriteAsync($"{hostels.Count}\n");
             for (int i = 0; i < hostels.Count; i++)
             {
-                writer.WriteAsync($"{hostels[i].ID}\n");
                 writer.WriteAsync($"{hostels[i].Workers.Count}\n");
                 for (int j = 0; j < hostels[i].Workers.Count; j++)
                 {
@@ -147,6 +148,8 @@ public static class Campus
 
             writer.WriteLine($"{LastID}");
         }
+
+        MessageBox.Show($"Інформація успішно збережена!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
 
@@ -158,32 +161,104 @@ public static class Campus
         DeletedID.Clear();
         LastID = 0;
 
-        using (StreamReader reader = new StreamReader(@"..\..\..\CampusData\Data.txt", false))
+        using (StreamReader reader = new StreamReader(new FileStream(@"..\..\..\CampusData\Data.txt", FileMode.Open)))
         {
-            int hostelsNumber = Convert.ToInt32(reader.ReadLineAsync());
+            int hostelsNumber = Convert.ToInt32(reader.ReadLine());
             for (int i = 0; i < hostelsNumber; i++)
             {
-                int ID = Convert.ToInt32(reader.ReadLineAsync());
-                string univName = reader.ReadLineAsync().ToString();
-                string hostleAddress = reader.ReadLineAsync().ToString();
+                int ID = Convert.ToInt32(reader.ReadLine());
+                string univName = reader.ReadLine().ToString();
+                string hostleAddress = reader.ReadLine().ToString();
                 List<Worker> workers = new List<Worker>(0);
                 List<Room> rooms = new List<Room>(0);
                 Campus.hostels.Add(new Hostel(ID, univName, hostleAddress, workers, rooms));
 
-                int roomsNumber = Convert.ToInt32(reader.ReadLineAsync());
+                int roomsNumber = Convert.ToInt32(reader.ReadLine());
                 for (int j = 0; j < roomsNumber; j++)
                 {
-                    int roomID = Convert.ToInt32(reader.ReadLineAsync());
-                    RoomType rt = (RoomType)Convert.ToInt32(reader.ReadLineAsync());
+                    int roomID = Convert.ToInt32(reader.ReadLine());                    
+                    Enum.TryParse<RoomType>(reader.ReadLine().ToString(), out RoomType rt);
                     hostels[i].Rooms.Add(new Room(roomID, rt, null));
 
-                    int booksNumber = Convert.ToInt32(reader.ReadLineAsync());
+                    int booksNumber = Convert.ToInt32(reader.ReadLine());
                     for (int k = 0; k < booksNumber; k++)
                     {
-                        hostels[i].Rooms[j].IDrecordBooks.Add(reader.ReadLineAsync().ToString());
+                        hostels[i].Rooms[j].IDrecordBooks.Add(reader.ReadLine().ToString());
                     }
+                }
+                hostels[i].CalcProfit();
             }
         }
+
+        using (StreamReader reader = new StreamReader(new FileStream(@"..\..\..\CampusData\Campus.txt", FileMode.Open)))
+        {
+            int campusStudentNumber = Convert.ToInt32(reader.ReadLine());
+            for (int j = 0; j < campusStudentNumber; j++)
+            {               
+                Campus.CampusStudents.Add(ReadFromFile(reader));
+            }
+            int deletedHostelsNumber = Convert.ToInt32(reader.ReadLine());
+            for (int j = 0; j < deletedHostelsNumber; j++)
+            {
+                Campus.DeleteHostels.Add(Convert.ToInt32(reader.ReadLine()));
+            }
+            int deletedIDNumber = Convert.ToInt32(reader.ReadLine());
+            for (int j = 0; j < deletedIDNumber; j++)
+            {
+                Campus.DeletedID.Add(Convert.ToInt32(reader.ReadLine()));
+            }
+            Campus.LastID = Convert.ToInt32(reader.ReadLine());
+        }
+
+        using (StreamReader reader = new StreamReader(new FileStream(@"..\..\..\CampusData\Students.txt", FileMode.Open)))
+        {
+            int hostelsNumber = Convert.ToInt32(reader.ReadLine());
+            for (int i = 0; i < hostelsNumber; i++)
+            {
+                int studentsNumber = Convert.ToInt32(reader.ReadLine());
+                for (int j = 0; j < studentsNumber; j++)
+                {
+                    Campus.hostels[j].Students.Add(ReadFromFile(reader));
+                    hostels[i].CalcProfit();
+                }
+            }
+        }
+
+        using (StreamReader reader = new StreamReader(new FileStream(@"..\..\..\CampusData\Workers.txt", FileMode.Open)))
+        {
+            int hostelsNumber = Convert.ToInt32(reader.ReadLine());
+            for (int i = 0; i < hostelsNumber; i++)
+            {
+                int workersNumber = Convert.ToInt32(reader.ReadLine());
+                for (int j = 0; j < workersNumber; j++)
+                {
+                    string[] Name = new string[2];
+                    Name[0] = reader.ReadLine().ToString();
+                    Name[1] = reader.ReadLine().ToString();
+                    Enum.TryParse<Position>(reader.ReadLine().ToString(), out Position position);
+                    string IndividualTaxNumber = reader.ReadLine().ToString();
+                    Campus.hostels[i].Workers.Add(new Worker(Name, position, IndividualTaxNumber));
+                    hostels[i].CalcProfit();
+                }
+            }
+        }
+
+        MessageBox.Show($"Інформація успішно завантажена!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+
+    private static Student ReadFromFile(StreamReader reader)
+    {
+        string[] FullName = new string[3];
+        FullName[0] = reader.ReadLine().ToString();
+        FullName[1] = reader.ReadLine().ToString();
+        FullName[2] = reader.ReadLine().ToString();
+        string Faculty = reader.ReadLine().ToString();
+        string Group = reader.ReadLine().ToString();
+        //(Sex)Convert.ToInt32(reader.ReadLine());
+        Enum.TryParse<Sex>(reader.ReadLine().ToString(), out Sex sex);
+        Enum.TryParse<CourseNumber>(reader.ReadLine().ToString(), out CourseNumber Course);
+        string IDRecBooks = reader.ReadLine().ToString();
+        return new Student(FullName, Faculty, sex, Group, IDRecBooks, Course);
     }
 
     public static long LongRandom(long min, long max, Random rand)

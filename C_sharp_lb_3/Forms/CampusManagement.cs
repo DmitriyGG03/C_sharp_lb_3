@@ -2,6 +2,7 @@
 using C_sharp_lb_3;
 using Hostels;
 using System.Text;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace C_sharp_lb_2.Forms
@@ -36,6 +37,11 @@ namespace C_sharp_lb_2.Forms
         }
         private void bt_showInfo_Click(object sender, EventArgs e)
         {
+            if(hostel == null)
+            {
+                MessageBox.Show($"Введіть номер гуртожитку!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             DialogResult dr = MessageBox.Show(hostel.ToString() + "Чи хочете ви переглянути список студентів гуртожитку?", $"Інформація про гуртожиток № {hostel.ID}", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
             {
@@ -338,9 +344,9 @@ namespace C_sharp_lb_2.Forms
                 else if (rb_cleaner.Checked) position = Position.Cleaner;
                 else MessageBox.Show($"Оберіть посаду!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                hostel.WorkerCreating(arrString, position, tb_staff_ITN.Text);
-
-                MessageBox.Show($"Працівник по імені {tb_staff_surname.Text} {tb_staff_name.Text} та з ІПН: {tb_staff_ITN.Text} \nбув успішно створений та доданий до гуртожитку № {hostel.ID}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                hostel.Workers.Add(new Worker(arrString, position, tb_staff_ITN.Text));
+                
+                MessageBox.Show($"Працівник по імені {tb_staff_surname.Text} {tb_staff_name.Text} та з ІПН: {hostel.Workers[^1].IndividualTaxNumber} \nбув успішно створений та доданий до гуртожитку № {hostel.ID}", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

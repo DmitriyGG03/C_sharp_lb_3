@@ -10,7 +10,7 @@ public class Hostel : ICloneable
     public double hostelProfit { get; set; }
 
     public List<Worker> Workers { get; set; } = new List<Worker>(0);
-    public List<Student> Students { get; set; } = new List<Student>(0); // Змінив пріоритет доступу, але можна перемістити метод з CM form і залишити його незмінним
+    public List<Student> Students { get; set; } = new List<Student>(0); 
     public List<Room> Rooms { get; set; } = new List<Room>(0);
     public int StuffNumber { get => Workers.Count; }
     public int StudentAmount { get => Students.Count; }
@@ -64,11 +64,6 @@ public class Hostel : ICloneable
             }
         }
         return false;
-    }
-
-    public void WorkerCreating(string[] name, Position position, string? individualTaxNumber)
-    {
-        Workers.Add(new Worker(name, position, individualTaxNumber));
     }
 
     public object Clone()

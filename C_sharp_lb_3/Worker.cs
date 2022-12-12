@@ -34,7 +34,7 @@ public class Worker
         this.position = position;
         Salary = (int)position;
         if (individualTaxNumber is null || individualTaxNumber == "") IndividualTaxNumber = GenerationTaxNumber();
-        else individualTaxNumber = IndividualTaxNumber.ToString();
+        else IndividualTaxNumber = individualTaxNumber.ToString();
     }
 
     private string GenerationTaxNumber() => Campus.LongRandom(1000000000L, 9999999999L, new Random()).ToString();
